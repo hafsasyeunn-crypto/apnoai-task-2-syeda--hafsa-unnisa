@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syeda Hafsa Unnisa - Profile</title>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #20152e, #694b83, #bd8ac4);
+  transition: 0.4s;
+}
+
+.card {
+  width: 100%;
+  max-width: 430px;
+  padding: 35px 25px;
+  text-align: center;
+  border-radius: 25px;
+  color: white;
+  background: rgba(255,255,255,0.13);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+}
+
+.theme {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.theme button {
+  border: none;
+  border-radius: 20px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 145px;
+  height: 145px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 5px solid white;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+  margin-bottom: 20px;
+  background: #d9b5eb;
+}
+
+h1 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.role {
+  color: #ffd1fa;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.bio {
+  line-height: 1.8;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+h3 {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.skills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.skill {
+  padding: 10px 16px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.2);
+  font-size: 13px;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.socials a {
+  text-decoration: none;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.2);
+}
+
+.socials a:hover {
+  background: #e9a9ef;
+  color: #241331;
+}
+
+.like {
+  border: none;
+  padding: 12px 25px;
+  border-radius: 25px;
+  color: white;
+  background: linear-gradient(135deg, #fa579d, #a16ce4);
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.footer {
+  margin-top: 25px;
+  font-size: 12px;
+}
+
+body.light {
+  background: linear-gradient(135deg, #fbd7eb, #d7caff, #bce8f4);
+}
+
+body.light .card {
+  color: #342343;
+  background: rgba(255,255,255,0.65);
+}
+
+body.light .role {
+  color: #8851a8;
+}
+
+body.light .skill,
+body.light .socials a {
+  color: #49305d;
+  background: #e9d8f4;
+}
+
+@media(max-width:480px) {
+  .card {
+    padding: 25px 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+const { useState } = React;
+
+function ProfileCard() {
+
+  const [isDark, setIsDark] = useState(true);
+  const [likes, setLikes] = useState(0);
+
+  function toggleTheme() {
+    setIsDark(!isDark);
+    document.body.classList.toggle("light");
+  }
+
+  return (
+
+    <div className="card">
+
+      <div className="theme">
+        <button onClick={toggleTheme}>
+          {isDark ? "☀️ Light Mode" : "🌙 Dark Mode"}
+        </button>
+      </div>
+
+      {/* YOUR ACTUAL PROFILE PHOTO */}
+      <img
+        className="avatar"
+        src="./syeda%20hafsa%20unnisa.jpeg"
+        alt="Syeda Hafsa Unnisa"
+        onError={(e) => {
+          e.currentTarget.style.display = "none";
+          document.getElementById("photoError").style.display = "block";
+        }}
+      />
+
+      <p id="photoError" style={{
+        display: "none",
+        marginBottom: "15px",
+        color: "#ffd1fa"
+      }}>
+        Photo not found. Check the image filename.
+      </p>
+
+      <h1>Syeda Hafsa Unnisa</h1>
+
+      <p className="role">
+        Computer Science Engineering Student
+      </p>
+
+      <p className="bio">
+        I am a Computer Science Engineering student passionate
+        about programming, web development and technology.
+        I have knowledge of Python, TypeScript, Java and HTML.
+        I enjoy learning new technologies and creating innovative projects.
+      </p>
+
+      <h3>My Technical Skills</h3>
+
+      <div className="skills">
+        <span className="skill">Python</span>
+        <span className="skill">TypeScript</span>
+        <span className="skill">Java</span>
+        <span className="skill">HTML</span>
+      </div>
+
+      <h3>Connect With Me</h3>
+
+      <div className="socials">
+
+        <a
+          href="https://github.com/hafsasyeunn-crypto"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+
+        <a
+          href="https://x.com/unnisa_hafsa?s=11"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          X / Twitter
+        </a>
+
+      </div>
+
+      <button
+        className="like"
+        onClick={() => setLikes(likes + 1)}
+      >
+        ❤️ Like {likes}
+      </button>
+
+      <p className="footer">
+        Designed with React | 2026
+      </p>
+
+    </div>
+  );
+}
+
+function App() {
+  return <ProfileCard />;
+}
+
+ReactDOM.createRoot(
+  document.getElementById("root")
+).render(<App />);
+
+</script>
+
+</body>
+</html>
